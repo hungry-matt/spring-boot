@@ -36,4 +36,11 @@ public class Posts {
         this.content = content;
         this.author = author;
     }
+
+    //쿼리를 날리지 않고도 update가 가능한것은 JPA의 영속성 컨텍스트 때문이다.
+    //영속성 컨텍스트란, 엔티티를 영구 저장하는 환경이다.
+    public void update(String title, String content) {
+        this.title = title;
+        this.content = content;
+    }
 }
