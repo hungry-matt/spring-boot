@@ -1,14 +1,17 @@
 package com.example.book.springboot;
 
 import com.example.book.springboot.web.HelloController;
+import org.hamcrest.Matchers;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 
+import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -39,5 +42,25 @@ public class HelloControllerTest {
                 .andExpect(content().string(hello))
                 //test 응답 결과에 대한 모든 내용 출력.
                 .andDo(MockMvcResultHandlers.print());
+    }
+
+    @Test
+    public void hell_dto_test() throws Exception {
+        String name = "hello";
+        int amount = 1000;
+
+        mvc.perform(
+                get("/hello/dto")
+                        .accept(MediaType.APPLICATION_JSON)
+                        .param("test", name)
+                        .param("amount", String.valueOf(amount))
+                )
+                //jsonPath : JSON 응답값을 필드별로 검증 할 수 있는 메소드 이다.
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.name", Matchers.is(name)))
+                .andExpect(jsonPath("$.amount", Matchers.is(amount)))
+                .andDo(MockMvcResultHandlers.print());
+
+
     }
 }
