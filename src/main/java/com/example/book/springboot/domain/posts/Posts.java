@@ -1,5 +1,6 @@
 package com.example.book.springboot.domain.posts;
 
+import com.example.book.springboot.domain.BaseTimeEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,7 +12,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 //테이블과 링크되는 클래스임을 나타냄
 @Entity
-public class Posts {
+public class Posts extends BaseTimeEntity {
 
     //해당 테이블의 PK임을 나타냄
     @Id
