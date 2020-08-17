@@ -90,6 +90,8 @@ public class PostsApiControllerTest {
 
         ResponseEntity<Long> responseEntity = testRestTemplate.exchange(url, HttpMethod.PUT, requestEntity, Long.class);
 
+        System.out.println(responseEntity);
+
         //http 상태 코드 확인
         assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
         //응답 본문에 값이 있는지 확인
