@@ -49,6 +49,9 @@ dependencies {
     //메모리에서 실행되며 애플리케이션을 재시작할 때마다 초기화 된다.
     compile('com.h2database:h2')
 
+    //mustache 의존성 등록
+    compile('org.springframework.boot:spring-boot-starter-mustache')
+
 }
 
 // github 에 프로젝트를 올리기전에 git 이 설치되었는지 확인.
