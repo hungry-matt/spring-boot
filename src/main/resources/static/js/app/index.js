@@ -4,6 +4,9 @@ var index = {
         $('#btn-save').on('click', function(){
            _this.save();
         });
+        $('#btn-update').on('click', function(){
+            _this.update();
+        });
     }
     , save : function () {
         var data = {
@@ -22,7 +25,7 @@ var index = {
     , update : function() {
         var id = $('#id').val();
 
-        var date = {
+        var data = {
             title: $('#title').val()
             , content : $('#content').val()
             , message : "글이 수정 되었습니다."
