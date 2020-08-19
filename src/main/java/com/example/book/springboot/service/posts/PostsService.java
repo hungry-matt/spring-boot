@@ -3,12 +3,15 @@ package com.example.book.springboot.service.posts;
 import com.example.book.springboot.domain.posts.Posts;
 import com.example.book.springboot.domain.posts.PostsRepository;
 import com.example.book.springboot.domain.posts.PostsSaveRequestDto;
+import com.example.book.springboot.web.dto.PostsListResponseDto;
 import com.example.book.springboot.web.dto.PostsResponseDto;
 import com.example.book.springboot.web.dto.PostsUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -37,5 +40,14 @@ public class PostsService {
     public PostsResponseDto findById(Long id) {
         Posts posts = postsRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id=" + id));
         return new PostsResponseDto(posts);
+    }
+
+    @Transactional
+    public List<PostsListResponseDto> findAllDesc() {
+        return postsRepository.findAllDesc().stream()
+                //.map(posts -> new PostsListResponseDto(posts))
+                //postsRepository 결과로 넘어온 Posts의 Stream을 map을 통해 PostsListResponseDto로 변환 -> List로 반환하는 메서드
+                .map(PostsListResponseDto::new)
+                .collect(Collectors.toList());
     }
 }
