@@ -7,6 +7,9 @@ var index = {
         $('#btn-update').on('click', function(){
             _this.update();
         });
+        $('#btn-delete').on('click', function(){
+            _this.delete();
+        });
     }
     , save : function () {
         var data = {
@@ -20,7 +23,7 @@ var index = {
 
         if(!confirm("저장 하시겠습니까?")) return false;
 
-        this.postAjax(data);
+        this.go(data);
     }
     , update : function() {
         var id = $('#id').val();
@@ -33,9 +36,20 @@ var index = {
             , type : 'put'
         };
 
-        this.postAjax(data);
+        this.go(data);
     }
-    , postAjax : function(data) {
+    , delete : function() {
+        var id = $('#id').val();
+
+        var data = {
+            message : "글이 삭제 되었습니다."
+            , url : "/api/v1/posts/" + id
+            , type : "delete"
+        };
+
+        this.go(data);
+    }
+    , go : function(data) {
         $.ajax({
             type : data.type
             , url : data.url
@@ -50,7 +64,5 @@ var index = {
         });
     }
 };
-
-
 
 index.init();
