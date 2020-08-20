@@ -27,8 +27,13 @@ public class IndexContoroller {
 
     @GetMapping("/posts/update/{id}")
     public String postsUpdate(@PathVariable Long id, Model model) {
-        model.addAttribute("posts", postsService.findById(id));
-        return "posts-update";
+        String url = "posts-update";
+        try{
+            model.addAttribute("posts", postsService.findById(id));
+        } catch (Exception e) {
+            url = "redirect:/";
+        }
+        return url;
     }
 
     @GetMapping("/posts/save")
