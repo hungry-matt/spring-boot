@@ -5,7 +5,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 
 @RequiredArgsConstructor
 @Controller
@@ -21,6 +23,17 @@ public class IndexContoroller {
         //Model : 서버 템플릿 엔진에서 사용할 수 있는 객체를 저장. findAllDesc()로 가져온 결과를 posts로 전달.
         model.addAttribute("posts", postsService.findAllDesc());
         return "index";
+    }
+
+    @GetMapping("/posts/update/{id}")
+    public String postsUpdate(@PathVariable Long id, Model model) {
+        String url = "posts-update";
+        try{
+            model.addAttribute("posts", postsService.findById(id));
+        } catch (Exception e) {
+            url = "redirect:/";
+        }
+        return url;
     }
 
     @GetMapping("/posts/save")

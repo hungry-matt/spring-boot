@@ -11,6 +11,12 @@
         <br>
 
         <table class="table table-horizontal table-bordered">
+            <colgroup>
+                <col width="30">
+                <col width="200">
+                <col width="50">
+                <col width="50">
+            </colgroup>
             <thead class="thead-strong">
                 <tr>
                     <th>게시글 번호</th>
@@ -23,7 +29,7 @@
                 {{#posts}}
                     <tr>
                         <td>{{id}}</td>
-                        <td><a href="/posts/updata/{{id}}">{{title}}</a></td>
+                        <td><a href="/posts/update/{{id}}">{{title}}</a></td>
                         <td>{{author}}</td>
                         <td>{{modifiedDate}}</td>
                     </tr>
