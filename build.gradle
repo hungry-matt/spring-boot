@@ -54,6 +54,9 @@ dependencies {
     
     //소셜 로그인등 클라이언트 입장에서 소셜 서비스가 필요할 경우 등록
     compile('org.springframework.boot:spring-boot-starter-oauth2-client')
+
+    //세션정보를 데이터베이스에 저장하기 위해 등록
+    compile('org.springframework.session:spring-session-jdbc')
 }
 
 // github 에 프로젝트를 올리기전에 git 이 설치되었는지 확인.
