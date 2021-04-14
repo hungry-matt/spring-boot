@@ -57,6 +57,10 @@ dependencies {
 
     //세션정보를 데이터베이스에 저장하기 위해 등록
     compile('org.springframework.session:spring-session-jdbc')
+
+    //스프링 시큐리티 설정 때문에 인증되지 않은 사용자의 요청이 이동된다.
+    //그래서 임의로 인증된 사용자를 추가하여 테스트 코드를 작성하기 위해 등록
+    testCompile('org.springframework.security:spring-security-test')
 }
 
 // github 에 프로젝트를 올리기전에 git 이 설치되었는지 확인.
