@@ -1,5 +1,6 @@
 package com.example.book.springboot.web;
 
+import com.example.book.springboot.config.auth.LoginUser;
 import com.example.book.springboot.config.auth.dto.SessionUser;
 import com.example.book.springboot.service.posts.PostsService;
 import lombok.RequiredArgsConstructor;
@@ -23,15 +24,13 @@ public class IndexContoroller {
     // mustache 의존성 추가로 앞의 경로와 뒤의 파일 확장자가 자동으로 지정 된다.
     // /resourece/templates/index.mustache
     @GetMapping("/")
-    public String index(Model model) {
+    public String index(Model model, @LoginUser SessionUser user) {
         // Service Layer에서 List<PostsListResponsDto> 를 반환하는 findAllDesc()를 model에 담아 View로 전달 한다.
         // Model : 서버 템플릿 엔진에서 사용할 수 있는 객체를 저장. findAllDesc()로 가져온 결과를 posts로 전달.
         model.addAttribute("posts", postsService.findAllDesc());
 
-        SessionUser user = (SessionUser) httpSession.getAttribute("user");
-
         if (user != null) {
-            model.addAttribute("userName", user.getName());
+            model.addAttribute("loginUserName", user.getName());
         }
 
         return "index";
