@@ -49,6 +49,8 @@ dependencies {
     //메모리에서 실행되며 애플리케이션을 재시작할 때마다 초기화 된다.
     compile('com.h2database:h2')
 
+    compile("org.mariadb.jdbc:mariadb-java-client")
+
     //mustache 의존성 등록
     compile('org.springframework.boot:spring-boot-starter-mustache')
     
