@@ -11,4 +11,4 @@
 - AWS EC2
 - AWS RDS
 - AWS S3
-- Travis CI
+- Travis CI (테스트)
