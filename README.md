@@ -10,4 +10,5 @@
 - JUnit 4
 - AWS EC2
 - AWS RDS
+- AWS S3
 - Travis CI
