@@ -1,5 +1,5 @@
 # 개발환경
-- Spring Boot 2.1.7.RELEASE
+- Spring Boot 2.1.9.RELEASE
 - Spring Boot JPA
 - Java 8
 - Gradle 5.2.1
@@ -8,3 +8,6 @@
 - Bootstrap
 - Mustache
 - JUnit 4
+- AWS EC2
+- AWS RDS
+- Travis CI
